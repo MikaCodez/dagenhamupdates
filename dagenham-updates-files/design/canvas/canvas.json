@@ -1,0 +1,92 @@
+{
+  "pages": [
+    { "id": "page-1", "name": "Screens" },
+    { "id": "page-2", "name": "Directions (archive)" }
+  ],
+  "artboards": [
+    { "file": "Main.dc.html", "title": "Homepage — desktop", "page": "page-1", "x": 0, "y": 0, "w": 1440, "h": 3100 },
+    { "file": "HomeMobile.dc.html", "title": "Homepage — mobile", "page": "page-1", "x": 1560, "y": 0, "w": 390, "h": 3480, "is_interactive": true },
+    { "file": "Article.dc.html", "title": "Article page", "page": "page-1", "x": 2070, "y": 0, "w": 1440, "h": 3000, "is_interactive": true },
+    { "file": "Feed.dc.html", "title": "Latest Updates — filterable", "page": "page-1", "x": 3630, "y": 0, "w": 1440, "h": 3050, "is_interactive": true },
+    { "file": "Tip.dc.html", "title": "Submit a Tip", "page": "page-1", "x": 5190, "y": 0, "w": 1440, "h": 2000, "is_interactive": true },
+
+    { "file": "DirectionBroadsheet.dc.html", "title": "A — Borough Broadsheet (chosen)", "page": "page-2", "x": 0, "y": 0, "w": 520, "h": 1220 },
+    { "file": "DirectionCivic.dc.html", "title": "B — Civic Modern", "page": "page-2", "x": 640, "y": 0, "w": 520, "h": 1220 },
+    { "file": "DirectionSignal.dc.html", "title": "C — Street Signal", "page": "page-2", "x": 1280, "y": 0, "w": 520, "h": 1220 }
+  ],
+  "annotations": [
+    {
+      "id": "brief",
+      "page": "page-1",
+      "x": 0,
+      "y": -580,
+      "w": 1200,
+      "text": "DAGENHAM UPDATES — MVP SCREENS\nBorough Broadsheet, built out. Four screens plus the mobile homepage, in the PRD's build order.\nThree of them respond to clicks: the feed filters, the tip form switches type and submits, the mobile menu opens. Try them.\nContent is sample copy for layout. Hard facts are left as [DATE] / [SOURCE] / [ATTRIBUTION] for you to fill."
+    },
+    {
+      "id": "note-home",
+      "page": "page-1",
+      "x": 0,
+      "y": -330,
+      "w": 1440,
+      "text": "HOMEPAGE — DESKTOP\nEvery section from your wireframe in order. Two additions worth your eye: the 'How we source' box in the right rail, and the non-affiliation line in the footer. The accent colour is a control above this artboard — try the alternatives before settling on red."
+    },
+    {
+      "id": "note-mobile",
+      "page": "page-1",
+      "x": 1560,
+      "y": -330,
+      "w": 390,
+      "text": "HOMEPAGE — MOBILE\nYour tighter mobile order. Breaking sits ABOVE the hero — on a phone the update is the reason someone opened the page.\nTap the menu icon."
+    },
+    {
+      "id": "note-article",
+      "page": "page-1",
+      "x": 2070,
+      "y": -330,
+      "w": 1440,
+      "text": "ARTICLE PAGE\nCarries the trust work: a 'Developing' label, published AND updated times, a timestamped Sources & updates log so corrections are visible rather than silent, and a correction prompt. Share row, related travel, follow CTA in the rail. Click Copy link."
+    },
+    {
+      "id": "note-feed",
+      "page": "page-1",
+      "x": 3630,
+      "y": -330,
+      "w": 1440,
+      "text": "LATEST UPDATES — FILTERABLE\nClick the category chips; the list and the count actually filter. Unconfirmed items carry a label inline. Filter to Alerts to see the empty state, which turns a dead end into a prompt to send something in."
+    },
+    {
+      "id": "note-tip",
+      "page": "page-1",
+      "x": 5190,
+      "y": -330,
+      "w": 1440,
+      "text": "SUBMIT A TIP\nPick a submission type — the hint and the subject placeholder change with it. Tick 'send anonymously' and the name/email fields disappear rather than sitting there greyed out. Send it over shows the confirmation state.\nThe rail does the trust and safety work from section 13: what happens next, what not to send, and emergencies go to the emergency services."
+    },
+    {
+      "id": "note-a",
+      "page": "page-2",
+      "x": 0,
+      "y": -330,
+      "w": 520,
+      "text": "A — BOROUGH BROADSHEET · CHOSEN\nEditorial serif on warm paper, thin rules, red reserved for urgent. Signals credible local journalism, which is the PRD's number-one risk."
+    },
+    {
+      "id": "note-b",
+      "page": "page-2",
+      "x": 640,
+      "y": -330,
+      "w": 520,
+      "text": "B — CIVIC MODERN · not taken\nGeometric sans, soft cards, navy and amber. Calm and easy to extend, but closest to a stock news theme."
+    },
+    {
+      "id": "note-c",
+      "page": "page-2",
+      "x": 1280,
+      "y": -330,
+      "w": 520,
+      "text": "C — STREET SIGNAL · not taken\nCondensed caps on near-black with hazard amber. Built for Instagram adjacency; risks reading tabloid.\nWorth revisiting for social post templates."
+    }
+  ],
+  "launch": { "view": "canvas", "page": "page-1" }
+}

@@ -1,0 +1,296 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Archivo:wght@400;500;600;700;800&display=swap">
+  <style>
+    body { margin: 0; background: #FAF7F1; color: #16130F; font-family: Archivo, "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #16130F; text-decoration: none; border-bottom: 1px solid #C4BBAA; }
+    a:hover { color: #16130F; border-bottom-color: #16130F; }
+    input, textarea { font-family: Archivo, "Helvetica Neue", Arial, sans-serif; font-size: 15px; color: #16130F; background: #FFFFFF; border: 1px solid #DCD5C8; padding: 14px 15px; width: 100%; box-sizing: border-box; border-radius: 0; }
+    input:focus, textarea:focus { outline: 2px solid #16130F; outline-offset: -2px; }
+    input::placeholder, textarea::placeholder { color: #6B6357; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; box-sizing: border-box; background: #FAF7F1;">
+
+  <!-- ============ UTILITY BAR ============ -->
+  <div style="border-bottom: 1px solid #DCD5C8; background: #F2EBDF;">
+    <div style="width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 9px 0;">
+      <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.06em; color: #6B6357;">Monday 7 September · Barking &amp; Dagenham</div>
+      <div style="display: flex; align-items: center; gap: 18px;">
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #45403A;">Instagram</span>
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #45403A;">X</span>
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #45403A;">Newsletter</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ COMPACT HEADER ============ -->
+  <div style="border-bottom: 1px solid #16130F; background: #FAF7F1;">
+    <div style="width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 16px 0;">
+      <div style="font-family: Newsreader, Georgia, serif; font-size: 28px; font-weight: 500; letter-spacing: -0.015em;">Dagenham Updates</div>
+      <div style="display: flex; align-items: center; gap: 24px;">
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;">Latest</span>
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;">News</span>
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;">Travel</span>
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;">Community</span>
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;">Events</span>
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;">Business</span>
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;">About</span>
+      </div>
+      <div style="border: 1px solid #16130F; padding: 13px 20px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">About us</div>
+    </div>
+  </div>
+
+  <!-- ============ PAGE HEAD ============ -->
+  <div style="width: 1200px; margin: 0 auto; padding: 40px 0 0 0;">
+    <div style="font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: #6B6357;">Get in touch</div>
+    <h1 style="font-family: Newsreader, Georgia, serif; font-size: 54px; font-weight: 500; line-height: 1.04; letter-spacing: -0.02em; margin: 10px 0 0 0;">Submit a tip</h1>
+    <div style="font-family: Newsreader, Georgia, serif; font-size: 19px; line-height: 1.5; color: #45403A; margin-top: 12px; max-width: 700px; text-wrap: pretty;">Something happening on your road, an event worth listing, or a correction to something we have published — send it over. We read everything.</div>
+  </div>
+
+  <!-- ============ FORM + RAIL ============ -->
+  <div style="width: 1200px; margin: 0 auto; padding: 34px 0 0 0; display: flex; gap: 60px; align-items: flex-start;">
+
+    <!-- form column -->
+    <div style="width: 760px; flex-shrink: 0;">
+
+      <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+        <div style="border: 2px solid #16130F; background: #F2EBDF; padding: 40px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#16130F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+            <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase;">Received</span>
+          </div>
+          <div style="font-family: Newsreader, Georgia, serif; font-size: 34px; font-weight: 500; line-height: 1.16; margin-top: 16px; text-wrap: pretty;">Thanks — that has come through to us.</div>
+          <div style="font-size: 15.5px; line-height: 1.65; color: #45403A; margin-top: 14px; max-width: 580px; text-wrap: pretty;">We check every submission before anything is published. If we need more detail we will get in touch; if we use it, we will not name you unless you have told us we can.</div>
+          <div style="display: flex; gap: 10px; margin-top: 26px;">
+            <div onClick="{{ reset }}" style="background: #16130F; color: #FAF7F1; padding: 14px 22px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; user-select: none;">Send another</div>
+            <div style="border: 1px solid #16130F; padding: 14px 22px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">Back to latest updates</div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ editing }}" hint-placeholder-val="{{ true }}">
+        <div>
+
+          <!-- submission type -->
+          <div>
+            <div style="font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: #6B6357;">What are you sending?</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;">
+              <sc-for list="{{ types }}" as="type" hint-placeholder-count="5">
+                <div onClick="{{ type.pick }}" style="border: 1px solid #16130F; background: {{ type.bg }}; color: {{ type.fg }}; padding: 13px 18px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; user-select: none;">{{ type.label }}</div>
+              </sc-for>
+            </div>
+            <div style="font-size: 13.5px; line-height: 1.6; color: #45403A; margin-top: 12px;">{{ typeHint }}</div>
+          </div>
+
+          <!-- anonymous -->
+          <div onClick="{{ toggleAnon }}" style="display: flex; align-items: flex-start; gap: 13px; border: 1px solid #DCD5C8; background: {{ anonBg }}; padding: 17px 18px; margin-top: 26px; cursor: pointer; user-select: none;">
+            <div style="width: 22px; height: 22px; border: 2px solid #16130F; background: {{ boxBg }}; flex-shrink: 0; display: flex; align-items: center; justify-content: center; margin-top: 1px;">
+              <sc-if value="{{ anon }}" hint-placeholder-val="{{ false }}">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FAF7F1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+              </sc-if>
+            </div>
+            <div style="flex-grow: 1;">
+              <div style="font-size: 15px; font-weight: 700;">Send this anonymously</div>
+              <div style="font-size: 13.5px; line-height: 1.6; color: #45403A; margin-top: 4px; text-wrap: pretty;">We will not ask for your name or email. We also will not be able to come back to you for more detail.</div>
+            </div>
+          </div>
+
+          <!-- contact fields -->
+          <sc-if value="{{ named }}" hint-placeholder-val="{{ true }}">
+            <div style="display: flex; gap: 16px; margin-top: 24px;">
+              <div style="flex-grow: 1;">
+                <label for="f-name" style="display: block; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6357; margin-bottom: 9px;">Your name</label>
+                <input id="f-name" type="text" placeholder="First name is fine">
+              </div>
+              <div style="flex-grow: 1;">
+                <label for="f-email" style="display: block; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6357; margin-bottom: 9px;">Email</label>
+                <input id="f-email" type="email" placeholder="So we can come back to you">
+              </div>
+            </div>
+          </sc-if>
+
+          <!-- subject -->
+          <div style="margin-top: 24px;">
+            <label for="f-subject" style="display: block; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6357; margin-bottom: 9px;">Subject</label>
+            <input id="f-subject" type="text" placeholder="{{ subjectHint }}">
+          </div>
+
+          <!-- location -->
+          <div style="margin-top: 24px;">
+            <label for="f-where" style="display: block; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6357; margin-bottom: 9px;">Where is it? <span style="font-weight: 500; letter-spacing: 0; text-transform: none; color: #6B6357;">Optional</span></label>
+            <input id="f-where" type="text" placeholder="Road, estate, station or postcode">
+          </div>
+
+          <!-- message -->
+          <div style="margin-top: 24px;">
+            <label for="f-details" style="display: block; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6357; margin-bottom: 9px;">Details</label>
+            <textarea id="f-details" rows="7" placeholder="What happened, when, and how you know. If you saw it yourself, say so — that helps us a lot."></textarea>
+          </div>
+
+          <!-- attachment -->
+          <div style="margin-top: 24px;">
+            <div style="font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6357; margin-bottom: 9px;">Photo or file <span style="font-weight: 500; letter-spacing: 0; text-transform: none; color: #6B6357;">Optional</span></div>
+            <div style="border: 1px dashed #B8AE9D; background: #F6F1E7; padding: 26px; display: flex; align-items: center; justify-content: center; gap: 12px;">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#6B6357" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4"></path><path d="M7 9l5-5 5 5"></path><path d="M4 17v2a1 1 0 001 1h14a1 1 0 001-1v-2"></path></svg>
+              <span style="font-size: 14px; color: #45403A;">Drop a file here, or <span style="font-weight: 700;">choose one</span></span>
+            </div>
+          </div>
+
+          <!-- consent -->
+          <div style="border-top: 1px solid #DCD5C8; margin-top: 30px; padding-top: 20px;">
+            <div style="font-size: 13.5px; line-height: 1.65; color: #45403A; text-wrap: pretty;">By sending this you agree we may contact you about it. We do not publish your name, email or address, and we do not pass them on. See our <span style="font-weight: 700;">privacy policy</span>.</div>
+            <div style="display: flex; align-items: center; gap: 16px; margin-top: 22px;">
+              <div onClick="{{ submit }}" style="background: #B3121D; color: #FFFFFF; padding: 16px 30px; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; user-select: none;">Send it over</div>
+              <span style="font-size: 13px; color: #6B6357;">Usually read within a few hours.</span>
+            </div>
+          </div>
+
+        </div>
+      </sc-if>
+
+    </div>
+
+    <!-- rail -->
+    <div style="flex-grow: 1;">
+
+      <div style="border: 1px solid #DCD5C8; background: #F2EBDF; padding: 22px 24px;">
+        <div style="font-size: 11px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: #6B6357;">What happens next</div>
+        <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 16px;">
+          <div style="display: flex; gap: 13px;">
+            <span style="font-family: Newsreader, Georgia, serif; font-size: 21px; line-height: 1; width: 20px; flex-shrink: 0; color: #B3121D;">1</span>
+            <span style="font-size: 14px; line-height: 1.55; flex-grow: 1;">We read it, usually the same day.</span>
+          </div>
+          <div style="display: flex; gap: 13px;">
+            <span style="font-family: Newsreader, Georgia, serif; font-size: 21px; line-height: 1; width: 20px; flex-shrink: 0; color: #B3121D;">2</span>
+            <span style="font-size: 14px; line-height: 1.55; flex-grow: 1;">We check it against council, transport or emergency service sources where we can.</span>
+          </div>
+          <div style="display: flex; gap: 13px;">
+            <span style="font-family: Newsreader, Georgia, serif; font-size: 21px; line-height: 1; width: 20px; flex-shrink: 0; color: #B3121D;">3</span>
+            <span style="font-size: 14px; line-height: 1.55; flex-grow: 1;">If we publish, unconfirmed detail is labelled as such.</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="border: 1px solid #DCD5C8; padding: 22px 24px; margin-top: 20px;">
+        <div style="font-size: 11px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: #6B6357;">Please do not send</div>
+        <div style="display: flex; flex-direction: column; gap: 9px; margin-top: 14px;">
+          <span style="font-size: 14px; line-height: 1.55;">Accusations about named individuals</span>
+          <span style="font-size: 14px; line-height: 1.55;">Anyone's home address or personal details</span>
+          <span style="font-size: 14px; line-height: 1.55;">Anything you would not be happy to stand behind</span>
+        </div>
+        <div style="font-size: 13.5px; line-height: 1.6; color: #45403A; margin-top: 14px; padding-top: 13px; border-top: 1px solid #DCD5C8; text-wrap: pretty;">In an emergency, contact the emergency services first — not us.</div>
+      </div>
+
+      <div style="background: #16130F; color: #FAF7F1; padding: 24px; margin-top: 20px;">
+        <div style="font-family: Newsreader, Georgia, serif; font-size: 24px; font-weight: 500; line-height: 1.25; text-wrap: pretty;">Faster on social?</div>
+        <div style="font-size: 13.5px; line-height: 1.6; color: #C9C1B4; margin-top: 8px; text-wrap: pretty;">Send us a DM on Instagram or X — same inbox, same checks.</div>
+        <div style="display: flex; gap: 8px; margin-top: 16px;">
+          <div style="border: 1px solid #6B6357; padding: 12px 16px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">Instagram</div>
+          <div style="border: 1px solid #6B6357; padding: 12px 16px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">X</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <div style="background: #F2EBDF; margin-top: 52px; border-top: 1px solid #DCD5C8;">
+    <div style="width: 1200px; margin: 0 auto; padding: 36px 0 32px 0;">
+      <div style="display: flex; justify-content: space-between; gap: 60px;">
+        <div style="width: 380px;">
+          <div style="font-family: Newsreader, Georgia, serif; font-size: 26px; font-weight: 500; letter-spacing: -0.01em;">Dagenham Updates</div>
+          <div style="font-size: 13px; line-height: 1.6; color: #45403A; margin-top: 10px; text-wrap: pretty;">An independent local information service. Where possible, we verify content before publishing. For urgent situations, always check official sources.</div>
+        </div>
+        <div style="display: flex; gap: 56px;">
+          <div style="display: flex; flex-direction: column; gap: 9px;">
+            <div style="font-size: 11px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: #6B6357; margin-bottom: 3px;">Sections</div>
+            <span style="font-size: 13px;">Latest updates</span>
+            <span style="font-size: 13px;">News</span>
+            <span style="font-size: 13px;">Travel</span>
+            <span style="font-size: 13px;">Community</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 9px;">
+            <div style="font-size: 11px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: #6B6357; margin-bottom: 3px;">More</div>
+            <span style="font-size: 13px;">Events</span>
+            <span style="font-size: 13px;">Business</span>
+            <span style="font-size: 13px;">About</span>
+            <span style="font-size: 13px;">Contact</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 9px;">
+            <div style="font-size: 11px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: #6B6357; margin-bottom: 3px;">Legal</div>
+            <span style="font-size: 13px;">Privacy policy</span>
+            <span style="font-size: 13px;">Terms</span>
+            <span style="font-size: 13px;">Corrections</span>
+            <span style="font-size: 13px;">Advertise</span>
+          </div>
+        </div>
+      </div>
+      <div style="border-top: 1px solid #DCD5C8; margin-top: 28px; padding-top: 16px; display: flex; justify-content: space-between;">
+        <span style="font-size: 12px; color: #6B6357;">© 2026 Dagenham Updates</span>
+        <span style="font-size: 12px; color: #6B6357;">Not affiliated with the London Borough of Barking &amp; Dagenham</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":1440,"height":2000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const active = s.type || 'News tip';
+    const anon = !!s.anon;
+    const submitted = !!s.submitted;
+
+    const hints = {
+      'News tip': 'Something happening now, or about to. Roadworks, closures, incidents, council decisions.',
+      'Event listing': 'Markets, fetes, fundraisers, club nights, school and charity events.',
+      'Community notice': 'Group meetings, volunteering, lost and found, local appeals.',
+      'Business update': 'Openings, closures, moves and changes to opening hours.',
+      'Correction': 'Tell us what we got wrong and where. We will amend and note the change.'
+    };
+
+    const subjects = {
+      'News tip': 'e.g. Road closed on Rainham Road South',
+      'Event listing': 'e.g. Autumn community market, Saturday',
+      'Community notice': 'e.g. Volunteers wanted for park clean-up',
+      'Business update': 'e.g. New unit opening on the parade',
+      'Correction': 'e.g. Wrong date on the market listing'
+    };
+
+    const names = ['News tip', 'Event listing', 'Community notice', 'Business update', 'Correction'];
+    const types = names.map((name) => ({
+      label: name,
+      bg: name === active ? '#16130F' : '#FAF7F1',
+      fg: name === active ? '#FAF7F1' : '#16130F',
+      pick: () => this.setState({ type: name })
+    }));
+
+    return {
+      types: types,
+      typeHint: hints[active],
+      subjectHint: subjects[active],
+      anon: anon,
+      named: !anon,
+      anonBg: anon ? '#F2EBDF' : '#FAF7F1',
+      boxBg: anon ? '#16130F' : '#FFFFFF',
+      submitted: submitted,
+      editing: !submitted,
+      toggleAnon: () => this.setState({ anon: !anon }),
+      submit: () => this.setState({ submitted: true }),
+      reset: () => this.setState({ submitted: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

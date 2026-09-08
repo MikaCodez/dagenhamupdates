@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Archivo:wght@400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; background: #FAF7F1; color: #16130F; font-family: Archivo, "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #B3121D; text-decoration: none; }
+    a:hover { color: #7C0C14; }
+  </style>
+</helmet>
+
+<div style="width: 520px; box-sizing: border-box; padding: 0 0 28px 0; background: #FAF7F1;">
+
+  <!-- direction label -->
+  <div style="display: flex; align-items: center; gap: 8px; padding: 14px 28px 12px 28px; border-bottom: 1px solid #E7E0D4;">
+    <span style="display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: #B3121D;"></span>
+    <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6357;">Direction A — Borough Broadsheet</span>
+  </div>
+
+  <!-- masthead -->
+  <div style="padding: 26px 28px 0 28px;">
+    <div style="font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #6B6357; text-align: center;">Independent · Barking &amp; Dagenham</div>
+    <div style="font-family: Newsreader, Georgia, serif; font-size: 40px; font-weight: 500; letter-spacing: -0.015em; text-align: center; margin-top: 8px; line-height: 1.05;">Dagenham Updates</div>
+    <div style="height: 3px; border-top: 2px solid #16130F; border-bottom: 1px solid #16130F; margin-top: 14px;"></div>
+  </div>
+
+  <!-- nav -->
+  <div style="display: flex; gap: 18px; justify-content: center; padding: 11px 28px; border-bottom: 1px solid #DCD5C8;">
+    <span style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #B3121D;">Latest</span>
+    <span style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #45403A;">News</span>
+    <span style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #45403A;">Travel</span>
+    <span style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #45403A;">Community</span>
+    <span style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #45403A;">Events</span>
+    <span style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #45403A;">Business</span>
+  </div>
+
+  <!-- breaking strip -->
+  <div style="display: flex; align-items: stretch; margin: 20px 28px 0 28px; border-left: 4px solid #B3121D; background: #F4EDE2;">
+    <div style="padding: 11px 14px;">
+      <div style="display: flex; align-items: center; gap: 9px;">
+        <span style="font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #B3121D;">Breaking · Travel</span>
+        <span style="font-size: 10px; font-weight: 500; letter-spacing: 0.06em; color: #6B6357;">14 min ago</span>
+      </div>
+      <div style="font-family: Newsreader, Georgia, serif; font-size: 17px; font-weight: 500; line-height: 1.28; margin-top: 5px; text-wrap: pretty;">A13 westbound closed near Goresbrook after collision</div>
+    </div>
+  </div>
+
+  <!-- lead story -->
+  <div style="padding: 24px 28px 0 28px;">
+    <div style="font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #B3121D;">Council</div>
+    <div style="font-family: Newsreader, Georgia, serif; font-size: 34px; font-weight: 500; line-height: 1.1; letter-spacing: -0.012em; margin-top: 8px; text-wrap: pretty;">Consultation opens on Heathway public realm works</div>
+    <div style="font-family: Newsreader, Georgia, serif; font-size: 15.5px; line-height: 1.55; color: #45403A; margin-top: 10px; text-wrap: pretty;">Residents have until [DATE] to comment on proposed changes to paving, seating and loading bays along the parade.</div>
+    <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: #6B6357; margin-top: 10px;">Today, 08:42 · Source: [SOURCE]</div>
+    <div style="height: 118px; margin-top: 14px; background: #EDE5D7; border: 1px solid #DCD5C8; display: flex; align-items: center; justify-content: center;">
+      <span style="font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #A79C8B;">Featured image</span>
+    </div>
+  </div>
+
+  <!-- feed -->
+  <div style="padding: 22px 28px 0 28px;">
+    <div style="display: flex; align-items: center; gap: 10px; border-top: 2px solid #16130F; padding-top: 9px;">
+      <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;">Latest updates</span>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 0;">
+      <div style="display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid #DCD5C8;">
+        <div style="flex-grow: 1;">
+          <div style="font-size: 9.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6357;">Community</div>
+          <div style="font-family: Newsreader, Georgia, serif; font-size: 18px; font-weight: 500; line-height: 1.25; margin-top: 4px; text-wrap: pretty;">Barking library reopens after refurbishment</div>
+          <div style="font-size: 12px; color: #6B6357; margin-top: 5px;">2 hours ago</div>
+        </div>
+        <div style="width: 76px; height: 62px; background: #EDE5D7; border: 1px solid #DCD5C8; flex-shrink: 0;"></div>
+      </div>
+      <div style="display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid #DCD5C8;">
+        <div style="flex-grow: 1;">
+          <div style="font-size: 9.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6357;">Events</div>
+          <div style="font-family: Newsreader, Georgia, serif; font-size: 18px; font-weight: 500; line-height: 1.25; margin-top: 4px; text-wrap: pretty;">Dagenham market traders confirm weekend line-up</div>
+          <div style="font-size: 12px; color: #6B6357; margin-top: 5px;">Yesterday</div>
+        </div>
+        <div style="width: 76px; height: 62px; background: #EDE5D7; border: 1px solid #DCD5C8; flex-shrink: 0;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- category tiles -->
+  <div style="padding: 22px 28px 0 28px;">
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px;">
+      <div style="border: 1px solid #16130F; padding: 16px 10px; text-align: center; font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;">News</div>
+      <div style="border: 1px solid #16130F; padding: 16px 10px; text-align: center; font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;">Travel</div>
+      <div style="border: 1px solid #16130F; padding: 16px 10px; text-align: center; font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;">Community</div>
+      <div style="border: 1px solid #16130F; padding: 16px 10px; text-align: center; font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;">Events</div>
+      <div style="border: 1px solid #16130F; padding: 16px 10px; text-align: center; font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;">Business</div>
+      <div style="border: 1px solid #16130F; padding: 16px 10px; text-align: center; font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;">Alerts</div>
+    </div>
+  </div>
+
+  <!-- tip cta -->
+  <div style="margin: 22px 28px 0 28px; background: #16130F; color: #FAF7F1; padding: 18px 20px;">
+    <div style="font-family: Newsreader, Georgia, serif; font-size: 19px; font-weight: 500; line-height: 1.25;">Seen something? Send it to us.</div>
+    <div style="font-size: 12px; line-height: 1.5; color: #C9C1B4; margin-top: 6px;">Tips, events and corrections from residents.</div>
+    <div style="display: flex; gap: 8px; margin-top: 13px;">
+      <div style="background: #B3121D; color: #FFFFFF; padding: 15px 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">Submit a tip</div>
+      <div style="border: 1px solid #6B6357; color: #FAF7F1; padding: 15px 20px; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;">Contact</div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

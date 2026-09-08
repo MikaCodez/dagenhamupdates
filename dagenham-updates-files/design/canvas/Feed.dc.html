@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Archivo:wght@400;500;600;700;800&display=swap">
+  <style>
+    body { margin: 0; background: #FAF7F1; color: #16130F; font-family: Archivo, "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #16130F; text-decoration: none; border-bottom: 1px solid #C4BBAA; }
+    a:hover { color: #16130F; border-bottom-color: #16130F; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; box-sizing: border-box; background: #FAF7F1;">
+
+  <!-- ============ UTILITY BAR ============ -->
+  <div style="border-bottom: 1px solid #DCD5C8; background: #F2EBDF;">
+    <div style="width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 9px 0;">
+      <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.06em; color: #6B6357;">Monday 7 September · Barking &amp; Dagenham</div>
+      <div style="display: flex; align-items: center; gap: 18px;">
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #45403A;">Instagram</span>
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #45403A;">X</span>
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #45403A;">Newsletter</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ COMPACT HEADER ============ -->
+  <div style="border-bottom: 1px solid #16130F; background: #FAF7F1;">
+    <div style="width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 16px 0;">
+      <div style="font-family: Newsreader, Georgia, serif; font-size: 28px; font-weight: 500; letter-spacing: -0.015em;">Dagenham Updates</div>
+      <div style="display: flex; align-items: center; gap: 24px;">
+        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #B3121D;">Latest</span>
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;">News</span>
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;">Travel</span>
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;">Community</span>
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;">Events</span>
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;">Business</span>
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;">About</span>
+      </div>
+      <div style="background: #B3121D; border: 1px solid #B3121D; color: #FFFFFF; padding: 13px 20px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">Submit a tip</div>
+    </div>
+  </div>
+
+  <!-- ============ PAGE HEAD ============ -->
+  <div style="width: 1200px; margin: 0 auto; padding: 40px 0 0 0;">
+    <div style="font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: #6B6357;">Archive</div>
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 60px; margin-top: 10px;">
+      <div>
+        <h1 style="font-family: Newsreader, Georgia, serif; font-size: 54px; font-weight: 500; line-height: 1.04; letter-spacing: -0.02em; margin: 0;">Latest updates</h1>
+        <div style="font-family: Newsreader, Georgia, serif; font-size: 19px; line-height: 1.5; color: #45403A; margin-top: 12px; max-width: 680px; text-wrap: pretty;">Everything we have published, newest first. Filter by category, or search for a road, a street or a place name.</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 8px; border: 1px solid #DCD5C8; background: #FFFFFF; padding: 13px 15px; min-width: 300px; flex-shrink: 0;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6B6357" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.6-3.6"></path></svg>
+        <span style="font-size: 13px; color: #6B6357;">Search updates</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ FILTER CHIPS ============ -->
+  <div style="width: 1200px; margin: 0 auto; padding: 28px 0 0 0;">
+    <div style="border-top: 3px solid #16130F; padding-top: 11px; display: flex; align-items: center; justify-content: space-between; gap: 30px;">
+      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+        <sc-for list="{{ chips }}" as="chip" hint-placeholder-count="8">
+          <div onClick="{{ chip.pick }}" style="border: 1px solid #16130F; background: {{ chip.bg }}; color: {{ chip.fg }}; padding: 13px 20px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; user-select: none;">{{ chip.label }}</div>
+        </sc-for>
+      </div>
+      <div style="font-size: 13px; font-weight: 500; color: #6B6357; flex-shrink: 0;">{{ countLabel }}</div>
+    </div>
+  </div>
+
+  <!-- ============ LIST ============ -->
+  <div style="width: 1200px; margin: 0 auto; padding: 4px 0 0 0;">
+
+    <sc-for list="{{ list }}" as="item" hint-placeholder-count="9">
+      <div style="display: flex; gap: 32px; align-items: flex-start; padding: 26px 0; border-bottom: 1px solid #DCD5C8;">
+        <div style="width: 132px; flex-shrink: 0; padding-top: 4px;">
+          <div style="font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: {{ item.kickerColor }};">{{ item.cat }}</div>
+          <div style="font-size: 12.5px; color: #6B6357; margin-top: 6px;">{{ item.time }}</div>
+        </div>
+        <div style="flex-grow: 1;">
+          <div style="font-family: Newsreader, Georgia, serif; font-size: 28px; font-weight: 500; line-height: 1.18; letter-spacing: -0.01em; text-wrap: pretty;">{{ item.title }}</div>
+          <div style="font-size: 15px; line-height: 1.6; color: #45403A; margin-top: 8px; max-width: 720px; text-wrap: pretty;">{{ item.summary }}</div>
+          <sc-if value="{{ item.unconfirmed }}" hint-placeholder-val="{{ true }}">
+            <div style="display: inline-block; border: 1px solid #C9A227; background: #FBF3DC; color: #6B5313; padding: 6px 11px; font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 12px;">Unconfirmed — developing</div>
+          </sc-if>
+        </div>
+        <div style="width: 190px; height: 124px; background: #EDE5D7; border: 1px solid #DCD5C8; flex-shrink: 0;"></div>
+      </div>
+    </sc-for>
+
+    <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+      <div style="border-bottom: 1px solid #DCD5C8; padding: 64px 0; text-align: center;">
+        <div style="font-family: Newsreader, Georgia, serif; font-size: 28px; font-weight: 500;">Nothing filed under {{ active }} yet</div>
+        <div style="font-size: 15px; line-height: 1.6; color: #45403A; margin-top: 10px;">Try another category — or send us something for this one.</div>
+        <div style="display: inline-block; background: #B3121D; color: #FFFFFF; padding: 14px 22px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 20px;">Submit a tip</div>
+      </div>
+    </sc-if>
+
+    <div style="display: flex; justify-content: center; padding: 34px 0 0 0;">
+      <div style="border: 1px solid #16130F; padding: 15px 30px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">Load older updates</div>
+    </div>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <div style="background: #F2EBDF; margin-top: 52px; border-top: 1px solid #DCD5C8;">
+    <div style="width: 1200px; margin: 0 auto; padding: 36px 0 32px 0;">
+      <div style="display: flex; justify-content: space-between; gap: 60px;">
+        <div style="width: 380px;">
+          <div style="font-family: Newsreader, Georgia, serif; font-size: 26px; font-weight: 500; letter-spacing: -0.01em;">Dagenham Updates</div>
+          <div style="font-size: 13px; line-height: 1.6; color: #45403A; margin-top: 10px; text-wrap: pretty;">An independent local information service. Where possible, we verify content before publishing. For urgent situations, always check official sources.</div>
+        </div>
+        <div style="display: flex; gap: 56px;">
+          <div style="display: flex; flex-direction: column; gap: 9px;">
+            <div style="font-size: 11px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: #6B6357; margin-bottom: 3px;">Sections</div>
+            <span style="font-size: 13px;">Latest updates</span>
+            <span style="font-size: 13px;">News</span>
+            <span style="font-size: 13px;">Travel</span>
+            <span style="font-size: 13px;">Community</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 9px;">
+            <div style="font-size: 11px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: #6B6357; margin-bottom: 3px;">More</div>
+            <span style="font-size: 13px;">Events</span>
+            <span style="font-size: 13px;">Business</span>
+            <span style="font-size: 13px;">About</span>
+            <span style="font-size: 13px;">Contact</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 9px;">
+            <div style="font-size: 11px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: #6B6357; margin-bottom: 3px;">Legal</div>
+            <span style="font-size: 13px;">Privacy policy</span>
+            <span style="font-size: 13px;">Terms</span>
+            <span style="font-size: 13px;">Corrections</span>
+            <span style="font-size: 13px;">Advertise</span>
+          </div>
+        </div>
+      </div>
+      <div style="border-top: 1px solid #DCD5C8; margin-top: 28px; padding-top: 16px; display: flex; justify-content: space-between;">
+        <span style="font-size: 12px; color: #6B6357;">© 2026 Dagenham Updates</span>
+        <span style="font-size: 12px; color: #6B6357;">Not affiliated with the London Borough of Barking &amp; Dagenham</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":1440,"height":2500}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const active = (this.state && this.state.cat) || 'All';
+
+    const updates = [
+      { cat: 'Travel', time: '14 min ago', title: 'A13 westbound closed near Goresbrook after collision', summary: 'Diversions in place via Ripple Road. Buses on diversion. Check before you travel.', unconfirmed: false },
+      { cat: 'Council', time: 'Today, 08:42', title: 'Consultation opens on Heathway public realm works', summary: 'Residents have until [DATE] to comment on proposed changes to paving, seating and loading bays along the parade.', unconfirmed: false },
+      { cat: 'Community', time: '2 hours ago', title: 'Central library reopens after refurbishment', summary: 'Opening hours return to normal from next week, with the children’s section moved to the ground floor.', unconfirmed: false },
+      { cat: 'Business', time: '4 hours ago', title: 'Two new units let on Chequers Corner parade', summary: 'Both are expected to open before the end of the year. Details from the letting agent are limited so far.', unconfirmed: true },
+      { cat: 'Events', time: 'Yesterday', title: 'Market traders confirm weekend line-up', summary: 'Around thirty stalls are expected on the Heathway, including a food row along the north end.', unconfirmed: false },
+      { cat: 'News', time: 'Yesterday', title: 'School streets scheme extended to two more roads', summary: 'Timed restrictions apply at drop-off and pick-up. Residents keep access throughout.', unconfirmed: false },
+      { cat: 'Travel', time: '2 days ago', title: 'Overnight roadworks on Rainham Road South', summary: 'Lane closures until [DATE], with a signed diversion for northbound traffic.', unconfirmed: false },
+      { cat: 'Community', time: '2 days ago', title: 'Litter-pick group marks its hundredth Saturday', summary: 'The group has covered most of the ward since starting on the park perimeter.', unconfirmed: false },
+      { cat: 'Events', time: '3 days ago', title: 'Ward councillor drop-in surgery moved to the library', summary: 'The meeting room is on the first floor. No appointment needed.', unconfirmed: false },
+      { cat: 'News', time: '3 days ago', title: 'Weather warning issued for heavy rain overnight', summary: 'Surface water is likely on low-lying roads. Check official forecasts before travelling.', unconfirmed: false },
+      { cat: 'Business', time: '4 days ago', title: 'Family bakery reopens after six months of works', summary: 'Trading hours are back to normal from next week.', unconfirmed: false },
+      { cat: 'Community', time: '5 days ago', title: 'Local sixth form opens applications for engineering course', summary: 'Places are open to residents across the borough from [DATE].', unconfirmed: false }
+    ];
+
+    const names = ['All', 'News', 'Travel', 'Community', 'Events', 'Business', 'Council', 'Alerts'];
+    const chips = names.map((name) => ({
+      label: name,
+      bg: name === active ? '#16130F' : '#FAF7F1',
+      fg: name === active ? '#FAF7F1' : '#16130F',
+      pick: () => this.setState({ cat: name })
+    }));
+
+    const list = (active === 'All' ? updates : updates.filter((u) => u.cat === active))
+      .map((u) => Object.assign({}, u, {
+        kickerColor: u.cat === 'Travel' ? '#B3121D' : '#6B6357'
+      }));
+
+    return {
+      chips: chips,
+      list: list,
+      active: active,
+      empty: list.length === 0,
+      countLabel: list.length === 1 ? '1 update' : list.length + ' updates'
+    };
+  }
+}
+</script>
+</body>
+</html>

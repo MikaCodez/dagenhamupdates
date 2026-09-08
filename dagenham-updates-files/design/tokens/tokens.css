@@ -1,0 +1,222 @@
+/* ==========================================================================
+   Dagenham Updates — design tokens
+   Direction: Borough Broadsheet
+   --------------------------------------------------------------------------
+   Single source of truth for the visual system. Every value here is taken
+   from the approved artboards in design/canvas/. If a screen and this file
+   disagree, this file wins — update the artboard, not the build.
+   ========================================================================== */
+
+:root {
+
+  /* ---- Colour -----------------------------------------------------------
+     Warm paper ground, near-black ink, one accent held back for urgency.
+     All text pairs below meet WCAG AA at their intended sizes.            */
+
+  --du-paper:            #FAF7F1;  /* page ground */
+  --du-panel:            #F2EBDF;  /* utility bar, callout boxes, footer */
+  --du-field:            #FFFFFF;  /* input and search grounds */
+
+  --du-ink:              #16130F;  /* headlines, primary text, rules */
+  --du-ink-secondary:    #45403A;  /* standfirsts, body on panel   9.6:1 on paper */
+  --du-ink-muted:        #6B6357;  /* meta, timestamps, labels      5.5:1 on paper */
+  --du-ink-inverse:      #FAF7F1;  /* text on --du-ink */
+  --du-ink-inverse-mute: #C9C1B4;  /* secondary text on --du-ink   10.4:1 */
+
+  --du-rule:             #DCD5C8;  /* hairlines, card borders */
+  --du-rule-strong:      #16130F;  /* section rules, tile borders */
+  --du-dot:              #C4BBAA;  /* meta separators */
+
+  --du-accent:           #B3121D;  /* urgent only: breaking, primary CTA   6.5:1 on paper */
+  --du-accent-on-dark:   #E8635E;  /* the accent, legible on --du-ink      5.6:1 */
+
+  --du-placeholder-bg:   #EDE5D7;  /* image placeholder ground */
+
+  /* Status — travel and alerts. Never the only signal: always pair with a word. */
+  --du-status-severe:    #C0362C;
+  --du-status-minor:     #C9A227;
+  --du-status-clear:     #4E8C5B;
+
+  /* Unconfirmed / developing label */
+  --du-caution-bg:       #FBF3DC;
+  --du-caution-border:   #C9A227;
+  --du-caution-text:     #6B5313;  /* 6.6:1 on --du-caution-bg */
+
+
+  /* ---- Type -------------------------------------------------------------
+     Newsreader carries the editorial voice; Archivo does the UI work.
+     Both from Google Fonts. Give every face a real fallback stack.        */
+
+  --du-font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --du-font-ui:      "Archivo", "Helvetica Neue", Arial, sans-serif;
+
+  /* Display — serif, always weight 500, always tight */
+  --du-display-hero:     56px;  /* article H1 */
+  --du-display-page:     54px;  /* page titles */
+  --du-display-lead:     46px;  /* homepage lead story */
+  --du-display-1:        34px;
+  --du-display-2:        28px;  /* feed row titles */
+  --du-display-3:        24px;  /* card titles */
+  --du-display-4:        20px;  /* rail and list titles */
+  --du-display-weight:   500;
+  --du-display-leading:  1.08;  /* large sizes; step up to 1.24 by --du-display-4 */
+
+  /* Body */
+  --du-body-lg:          19.5px; /* article body, serif */
+  --du-body:             15px;
+  --du-body-sm:          13px;
+  --du-meta:             12px;   /* floor for anything read as a sentence */
+  --du-body-leading:     1.6;
+
+  /* Labels — uppercase, three roles only */
+  --du-label-section:    13px;   /* 800 / 0.14em — section heads */
+  --du-label-box:        11px;   /* 800 / 0.16em — callout box heads */
+  --du-label-kicker:     11px;   /* 800 / 0.14em — category kickers */
+  --du-label-button:     11.5px; /* 700 / 0.10em — all buttons */
+  --du-label-nav:        12px;   /* 600 / 0.12em — nav items (700 when active) */
+
+  --du-tracking-wide:    0.14em;
+  --du-tracking-wider:   0.16em;
+  --du-tracking-button:  0.10em;
+  --du-tracking-nav:     0.12em;
+
+
+  /* ---- Space ------------------------------------------------------------ */
+
+  --du-space-1:   4px;
+  --du-space-2:   8px;
+  --du-space-3:  12px;
+  --du-space-4:  16px;
+  --du-space-5:  22px;
+  --du-space-6:  32px;
+  --du-space-7:  44px;
+  --du-space-8:  60px;
+
+  --du-gutter-desktop: 120px; /* 1440 frame → 1200 content */
+  --du-gutter-mobile:   18px;
+
+  --du-content-max:   1200px;
+  --du-reading-col:    760px;
+  --du-rail-col:       380px;
+
+
+  /* ---- Components ------------------------------------------------------- */
+
+  /* Buttons — three sizes, no others */
+  --du-btn-pad-sm:   11px 18px;
+  --du-btn-pad-md:   13px 20px;
+  --du-btn-pad-lg:   16px 30px;
+  --du-btn-pad-touch: 16px;      /* full-width mobile; keeps height ≥ 48px */
+
+  /* Section rule: the one pattern for every section head */
+  --du-section-rule:  3px solid var(--du-rule-strong);
+  --du-section-gap:   11px;
+
+  --du-radius: 0;                /* deliberate: nothing in this system is rounded */
+  --du-tap-min: 44px;            /* minimum touch target */
+}
+
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+
+body {
+  margin: 0;
+  background: var(--du-paper);
+  color: var(--du-ink);
+  font-family: var(--du-font-ui);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--du-ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--du-dot);
+}
+
+a:hover {
+  color: var(--du-ink);
+  border-bottom-color: var(--du-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--du-ink);
+  outline-offset: 2px;
+}
+
+
+/* --------------------------------------------------------------------------
+   Patterns worth codifying — the rest lives in components
+   -------------------------------------------------------------------------- */
+
+.du-section-head {
+  border-top: var(--du-section-rule);
+  padding-top: var(--du-section-gap);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.du-label-section {
+  font-size: var(--du-label-section);
+  font-weight: 800;
+  letter-spacing: var(--du-tracking-wide);
+  text-transform: uppercase;
+}
+
+.du-kicker {
+  font-size: var(--du-label-kicker);
+  font-weight: 800;
+  letter-spacing: var(--du-tracking-wide);
+  text-transform: uppercase;
+  color: var(--du-ink-muted);
+}
+
+.du-kicker--urgent { color: var(--du-accent); }
+
+.du-headline {
+  font-family: var(--du-font-display);
+  font-weight: var(--du-display-weight);
+  letter-spacing: -0.018em;
+  line-height: var(--du-display-leading);
+  text-wrap: pretty;
+}
+
+.du-btn {
+  display: inline-block;
+  padding: var(--du-btn-pad-md);
+  font-size: var(--du-label-button);
+  font-weight: 700;
+  letter-spacing: var(--du-tracking-button);
+  text-transform: uppercase;
+  border: 1px solid var(--du-ink);
+  background: transparent;
+  color: var(--du-ink);
+  cursor: pointer;
+}
+
+.du-btn--primary {
+  background: var(--du-accent);
+  border-color: var(--du-accent);
+  color: #FFFFFF;
+}
+
+.du-btn--dark {
+  background: var(--du-ink);
+  border-color: var(--du-ink);
+  color: var(--du-ink-inverse);
+}
+
+/* Unconfirmed / developing — text-led, readable without colour */
+.du-caution {
+  display: inline-block;
+  border: 1px solid var(--du-caution-border);
+  background: var(--du-caution-bg);
+  color: var(--du-caution-text);
+  padding: 6px 11px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
