@@ -13,7 +13,10 @@ home base, archive and trust layer for the brand's social presence.
 
 ## Status
 
-Design phase. The MVP screens are drawn and the direction is agreed; no application code yet.
+Build phase. The MVP screens are drawn and the direction is agreed; the
+Next.js build in `../site/` covers the PRD's build order (§21) end to end,
+live on a real Sanity CMS project with its admin UI in `../studio-dagenhamupdates/`
+— see `../site/README.md`'s "Content: Sanity CMS" section.
 
 | Stage | State |
 | --- | --- |
@@ -21,8 +24,8 @@ Design phase. The MVP screens are drawn and the direction is agreed; no applicat
 | Design direction | ✅ Borough Broadsheet — see `docs/design-decisions.md` |
 | MVP screens | ✅ `design/canvas/` |
 | Design tokens | ✅ `design/tokens/tokens.css` |
-| Build | ⬜ not started |
-| CMS | ⬜ not started |
+| Build | 🟨 in progress — `../site/` |
+| CMS | ✅ live — `../site/` + `../studio-dagenhamupdates/` (Sanity project `y30qsdcf`) |
 
 ---
 

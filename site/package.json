@@ -1,0 +1,29 @@
+{
+  "name": "dagenham-updates-site",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "migrate:sanity": "node --env-file-if-exists=.env.local --experimental-strip-types scripts/migrate-to-sanity.mts"
+  },
+  "dependencies": {
+    "@portabletext/react": "^8.0.1",
+    "@sanity/client": "^8.6.1",
+    "@sanity/image-url": "^2.1.1",
+    "next": "16.3.4",
+    "next-sanity": "^13.3.4",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "resend": "^6.26.0",
+    "server-only": "^0.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "26.5.0",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.7",
+    "typescript": "7.0.2"
+  }
+}
