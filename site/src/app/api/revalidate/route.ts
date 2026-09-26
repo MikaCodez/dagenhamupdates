@@ -1,3 +1,4 @@
+import { timingSafeEqual } from "node:crypto";
 import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
@@ -14,7 +15,7 @@ export async function POST(request: Request) {
   if (!secret) {
     return NextResponse.json({ ok: false, error: "SANITY_REVALIDATE_SECRET not set." }, { status: 500 });
   }
-  if (provided !== secret) {
+  if (!provided || !secretsMatch(provided, secret)) {
     return NextResponse.json({ ok: false, error: "Invalid secret." }, { status: 401 });
   }
 
@@ -25,4 +26,16 @@ export async function POST(request: Request) {
   revalidatePath("/", "layout");
 
   return NextResponse.json({ revalidated: true, now: Date.now() });
+}
+
+// Plain `!==` leaks timing information proportional to how many leading
+// characters match — a textbook (if slow, low-value here) timing side
+// channel on the secret. `timingSafeEqual` needs equal-length buffers, so
+// length-mismatch is checked separately first — that check alone doesn't
+// leak anything useful an attacker doesn't already get for free from the
+// response depending on the secret's length being guessable at all.
+function secretsMatch(provided: string, expected: string): boolean {
+  const a = Buffer.from(provided);
+  const b = Buffer.from(expected);
+  return a.length === b.length && timingSafeEqual(a, b);
 }

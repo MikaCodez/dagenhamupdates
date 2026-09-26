@@ -16,6 +16,11 @@ const dayFormatterWithYear = new Intl.DateTimeFormat("en-GB", {
   year: "numeric",
 });
 
+const dayFormatterNoWeekday = new Intl.DateTimeFormat("en-GB", {
+  day: "numeric",
+  month: "short",
+});
+
 const timeFormatter = new Intl.DateTimeFormat("en-GB", {
   hour: "2-digit",
   minute: "2-digit",
@@ -31,11 +36,17 @@ export function formatDateTime(iso: string, now: Date = new Date()): string {
   return `${datePart} · ${timeFormatter.format(date)}`;
 }
 
-/** "9 Sep" / "9 Sep 2025" — for compact card meta. */
+/** "9 Sep" / "9 Sep 2025" — for compact card meta.
+ *
+ * Deliberately its own formatter (dayFormatterNoWeekday), not dayFormatter —
+ * the latter also has weekday:"short" for formatDateTime's longer form, and
+ * reusing it here silently produced "Wed 9 Sep" instead of the "9 Sep" this
+ * function documents. Caught by src/lib/format.test.ts; currently unused
+ * elsewhere in the app, so nothing downstream depended on the wrong output. */
 export function formatDateShort(iso: string, now: Date = new Date()): string {
   const date = new Date(iso);
   const sameYear = date.getFullYear() === now.getFullYear();
-  return sameYear ? dayFormatter.format(date) : dayFormatterWithYear.format(date);
+  return sameYear ? dayFormatterNoWeekday.format(date) : dayFormatterWithYear.format(date);
 }
 
 export function toIsoDate(iso: string): string {

@@ -1,12 +1,47 @@
 import { NextResponse } from "next/server";
 import { isSanityConfigured, writeToken } from "@/sanity/env";
 import { writeClient } from "@/sanity/writeClient";
+import { rateLimit, clientKey } from "@/lib/rate-limit";
+
+// Server-side mirror of TipForm.tsx's `accept="image/*,.pdf"` — that
+// attribute is only a UI hint, trivially bypassed by anyone posting to this
+// route directly, so it buys nothing without an equivalent check here.
+const ALLOWED_ATTACHMENT_TYPES = new Set([
+  "application/pdf",
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+  "image/gif",
+  "image/heic",
+  "image/heif",
+]);
+const MAX_ATTACHMENT_BYTES = 8 * 1024 * 1024; // 8MB
+const MAX_TEXT_LENGTH = 8000; // subject/message — generous for a tip, not unbounded
 
 // PRD §15's "submission inbox": writes a `submission` document to Sanity
 // (editors triage from Studio) and, if configured, emails a notification.
 // Without a Sanity write token this still validates the shape and logs
 // server-side, same as before — see site/README.md's "Stubbed" section.
 export async function POST(request: Request) {
+  // Public, unauthenticated endpoint — rate-limit before doing any work
+  // (including parsing the body) so a flood can't run up Sanity writes or
+  // Resend email sends. See src/lib/rate-limit.ts for the caveats.
+  if (!rateLimit(`tip:${clientKey(request)}`, 5, 10 * 60 * 1000)) {
+    return NextResponse.json(
+      { ok: false, error: "Too many submissions — please try again later." },
+      { status: 429 }
+    );
+  }
+
+  const contentLength = Number(request.headers.get("content-length") ?? 0);
+  if (contentLength > MAX_ATTACHMENT_BYTES * 2) {
+    // *2: formData's other text fields plus multipart overhead on top of
+    // one attachment near the cap below. An honest client never gets near
+    // this; a request that does isn't worth buffering into memory to find
+    // out — reject before request.formData() reads the whole body.
+    return NextResponse.json({ ok: false, error: "Request too large." }, { status: 413 });
+  }
+
   const formData = await request.formData();
 
   const subject = formData.get("subject");
@@ -19,6 +54,12 @@ export async function POST(request: Request) {
       { status: 400 }
     );
   }
+  if (typeof subject !== "string" || typeof message !== "string" || typeof type !== "string") {
+    return NextResponse.json({ ok: false, error: "Invalid field type." }, { status: 400 });
+  }
+  if (subject.length > MAX_TEXT_LENGTH || message.length > MAX_TEXT_LENGTH) {
+    return NextResponse.json({ ok: false, error: "That's too long — please shorten it." }, { status: 400 });
+  }
 
   const anonymous = formData.get("anonymous") === "true";
   const name = anonymous ? undefined : (formData.get("name") as string | null) ?? undefined;
@@ -26,6 +67,16 @@ export async function POST(request: Request) {
   const attachment = formData.get("attachment");
   const receivedAt = new Date().toISOString();
   const hasAttachment = attachment instanceof File && attachment.size > 0;
+
+  if (hasAttachment) {
+    const file = attachment as File;
+    if (file.size > MAX_ATTACHMENT_BYTES) {
+      return NextResponse.json({ ok: false, error: "Attachment is too large (8MB max)." }, { status: 413 });
+    }
+    if (!ALLOWED_ATTACHMENT_TYPES.has(file.type)) {
+      return NextResponse.json({ ok: false, error: "Unsupported attachment type." }, { status: 415 });
+    }
+  }
 
   if (isSanityConfigured && writeToken) {
     try {

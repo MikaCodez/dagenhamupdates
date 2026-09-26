@@ -71,7 +71,13 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     <div className="du-container" style={{ paddingBlock: "var(--du-space-8)" }}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        // JSON.stringify doesn't escape "<" — a post field containing
+        // "</script><script>…" would close this tag and inject arbitrary
+        // markup into the page. Everything here is currently authored by
+        // trusted editors in Sanity, not public input, but escaping it is
+        // free and this is exactly the kind of gap that turns into a real
+        // bug the day that stops being true.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
 
       <nav aria-label="Breadcrumb" style={{ fontSize: "var(--du-body-sm)", color: "var(--du-ink-muted)" }}>
