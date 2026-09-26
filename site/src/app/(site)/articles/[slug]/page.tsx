@@ -146,7 +146,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 alt={post.imageAlt ?? ""}
                 width={760}
                 height={340}
-                style={{ width: "100%", height: 340, objectFit: "cover" }}
+                // contain, not cover — see FeaturedCard.tsx's comment.
+                style={{ width: "100%", height: 340, objectFit: "contain", background: "var(--du-placeholder-bg)" }}
                 priority
               />
               {post.imageCredit ? (

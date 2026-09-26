@@ -203,8 +203,11 @@ scripted against this app (Playwright, etc.) must not wait on
 - **Tip form** email/CMS delivery is real once the env vars above are set;
   without them it still validates and logs server-side only (same as before).
   The optional attachment uploads to Sanity's asset store when configured.
-- **Newsletter** (`NewsletterForm.tsx`) confirms locally; no provider is
-  chosen yet (open question in `design-decisions.md`) and no email is sent.
+- **Newsletter** — live against a self-hosted [listmonk](https://listmonk.app)
+  (`../listmonk/`, see its README) via `/api/newsletter`, double opt-in.
+  Sends real confirmation emails once `../listmonk`'s SMTP points at a real
+  provider instead of the bundled Mailpit dev-catcher — see
+  `../listmonk/README.md`'s "SMTP" section before launch.
 - **Social links** fall back to `#` until `NEXT_PUBLIC_INSTAGRAM_URL` and
   `NEXT_PUBLIC_X_URL` are set — handles aren't decided yet either.
 - **Analytics**: GA4 wiring in `src/components/Analytics.tsx` is inert until

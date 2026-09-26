@@ -18,7 +18,11 @@ export function FeaturedCard({ post }: { post: PostSummary }) {
           alt={post.imageAlt ?? ""}
           width={760}
           height={380}
-          style={{ width: "100%", height: 380, objectFit: "cover" }}
+          // contain, not cover — these are as often text-carrying graphic
+          // cards as photos, and cropping text off a graphic reads as a
+          // rendering bug, not a stylistic choice, the way cropping a photo
+          // does. The fill colour keeps any letterboxing looking deliberate.
+          style={{ width: "100%", height: 380, objectFit: "contain", background: "var(--du-placeholder-bg)" }}
           priority
         />
       ) : (

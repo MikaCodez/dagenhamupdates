@@ -122,7 +122,8 @@ export default async function HomePage() {
                     alt={post.imageAlt ?? ""}
                     width={360}
                     height={168}
-                    style={{ width: "100%", height: 168, objectFit: "cover" }}
+                    // contain, not cover — see FeaturedCard.tsx's comment.
+                    style={{ width: "100%", height: 168, objectFit: "contain", background: "var(--du-placeholder-bg)" }}
                   />
                 ) : (
                   <div className="du-placeholder-image" style={{ height: 168 }} aria-hidden="true">

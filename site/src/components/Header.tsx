@@ -66,7 +66,7 @@ export function Header() {
               </a>
             </li>
             <li>
-              <Link href="/#newsletter">Newsletter</Link>
+              <Link href="/subscribe">Newsletter</Link>
             </li>
           </ul>
         </div>
