@@ -14,6 +14,9 @@
     "migrate:sanity": "node --env-file-if-exists=.env.local --experimental-strip-types scripts/migrate-to-sanity.mts",
     "seed:social-posts": "node --env-file-if-exists=.env.local --experimental-strip-types scripts/seed-social-posts.mts",
     "seed:social-posts-2": "node --env-file-if-exists=.env.local --experimental-strip-types scripts/seed-social-posts-2.mts",
+    "seed:social-posts-3": "node --env-file-if-exists=.env.local --experimental-strip-types scripts/seed-social-posts-3.mts",
+    "seed:social-posts-4": "node --env-file-if-exists=.env.local --experimental-strip-types scripts/seed-social-posts-4.mts",
+    "attach:social-images-2": "node --env-file-if-exists=.env.local --experimental-strip-types scripts/attach-social-images-2.mts",
     "attach:social-images": "node --env-file-if-exists=.env.local --experimental-strip-types scripts/attach-social-images.mts",
     "curate:homepage": "node --env-file-if-exists=.env.local --experimental-strip-types scripts/curate-homepage.mts"
   },
