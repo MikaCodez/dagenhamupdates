@@ -1,4 +1,4 @@
-# Security review — 2026-09-26
+# Security review — 2026-09-26 (updated 2026-10-25)
 
 Scope: `site/` (Next.js app), `studio-dagenhamupdates/` (Sanity Studio),
 `listmonk/` (Docker Compose), and the repo root. Manual review of every
@@ -8,6 +8,61 @@ queries) plus `npm audit` across all three Node projects.
 No secrets were found committed to git at any point in the repo's history
 — `.env.local` and `listmonk/.env` are both correctly gitignored and were
 never tracked.
+
+## Follow-up pass — 2026-10-25
+
+A month of normal work (new content scripts, the Vitest/Playwright suite
+from `TESTING.md`, a `next` patch release) had landed since the first pass.
+Re-ran everything above end to end rather than assuming it still held.
+
+**New, and the most significant finding of either pass**: `npm audit` on
+`site/` had gone from 14 vulnerabilities to 23, including **2 critical**
+ones in `next` itself — `next@16.3.4` (then-current) sits inside the
+vulnerable range for, among others, an *unauthenticated RCE in the Image
+Optimization API when SVG files are used* and an *unauthenticated RCE in
+`use cache` functions returning typed arrays*. Unlike the dev-tooling
+findings below, `next` is the actual framework serving this site in
+production — this one needed fixing, not just flagging.
+
+- **Fixed**: upgraded to `next@16.4.3` (latest stable patch in the 16.x
+  line — confirmed via `npm view next dist-tags`, not a major jump), then
+  ran `npm audit fix` for everything else it could resolve without a
+  breaking change. That also pulled in a patched `sharp` (bundled by
+  `next` itself for image optimization) and fixed a **critical `dompurify`
+  XSS** and a **high-severity `undici`** finding — the latter mattered
+  because `undici` sits underneath `@sanity/client`'s HTTP client
+  (`get-it`), which this app's server-side code actually uses for every
+  Sanity read/write, not just dev tooling. Net result: 23 → 14
+  vulnerabilities, **0 critical, 0 direct-production-path high**.
+- Repeated the identical `npm audit fix` in `studio-dagenhamupdates/`:
+  19 → 14, same 0-critical result.
+- **Verified, not just assumed**: full rebuild (`npm run build`), full
+  typecheck (`tsc --noEmit`), all 40 Vitest tests, and all 24 Playwright
+  e2e tests (desktop + mobile) after the upgrade — all green. Also
+  re-curled the live dev server to confirm all 5 security headers from
+  finding #7 below are still being sent, and re-exercised the rate
+  limiter, the tip-attachment MIME/size checks, and the revalidate-secret
+  check from findings #1–3 and #6 — all still behaving as fixed.
+- **Caught and fixed a regression from the fix itself**: `npm audit fix`
+  in the Studio project bumped `react` to `19.3.1` via a transitive
+  resolution but left `react-dom` at `19.2.8`, which broke `sanity build`
+  outright (`Incompatible React versions`) — Studio's own dependency tree
+  is sensitive to this mismatch in a way `site/`'s wasn't. Re-pinned both
+  back to `19.2.8` and confirmed `sanity build` succeeds again. Worth
+  knowing if you ever run `npm audit fix` here again: check `npm ls react
+  react-dom` for a mismatch before trusting the build.
+- The remaining 14 (in both projects) are the same ones flagged on
+  26 September — still entirely inside `next-sanity`/`sanity`'s own
+  CLI/build tooling (`@sanity/cli`, `@module-federation/vite`), still only
+  resolvable via the breaking `next-sanity@11.6.13` major upgrade, still
+  not reachable from this app's actual runtime code paths. See finding #9.
+- Everything else from the September pass — the rate limiter, the tip
+  upload validation, the revalidate timing-safe compare, the JSON-LD
+  escaping, the security headers, the GROQ parameterization — was
+  re-checked in place and found unchanged. No regressions from the
+  content-seeding scripts added in between (`seed-social-posts-3/4.mts`,
+  `attach-social-images-2/3.mts`): all run only against hardcoded local
+  file paths and a gitignored write token, no user input involved.
 
 ## Fixed in this pass
 
